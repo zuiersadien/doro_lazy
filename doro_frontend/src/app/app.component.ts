@@ -1,18 +1,20 @@
 import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { BtnComponent } from './componentes/btn/btn.component';
+import { InputComponent } from './componentes/input/input.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule],
+  imports: [RouterOutlet, FormsModule, BtnComponent, InputComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
   newTask: string = 'n';
   tasks: any[] = [];
-  newCategorie: string = '';
+  newCategorie: string = 'asdas';
   categories: any[] = [
     {
       description: 'codigo',
@@ -45,6 +47,6 @@ export class AppComponent {
       id: this.idGenerator(this.categories),
     });
     this.newCategorie = '';
-    console.log();
+    console.log(this.newCategorie);
   }
 }

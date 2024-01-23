@@ -1,20 +1,9 @@
 <div>
   <div>
     <h1 class="text-center">Ingresar Nueva tarea</h1>
-    <input
-      [(ngModel)]="newTask"
-      class="border-2 border-red-400"
-      type="text"
-      name=""
-      value=""
-    />
-    <button
-      type="button"
-      (click)="addNewTask()"
-      class="text-center bg-red-200 border-black border-2"
-    >
-      add New Task
-    </button>
+    <app-input [(inputValue)]="newTask"></app-input>
+    <app-btn typeButton="button" (click)="addNewTask()">Add New Task</app-btn>
+
     <div>
       @for (task of tasks; track task.id) {
         <div class="text-center bg-red-200 text-white">
@@ -31,26 +20,16 @@
       }
     </div>
   </div>
+
   <div class="border-black border-2">
     Crear Categoria
     <div class=""></div>
     @for (categorie of categories; track categorie.id) {
-      <div>
-        {{ categorie.description }}
-      </div>
+      <div class="bg-primary">{{ categorie.description }}</div>
     }
-    <input
-      type="text"
-      value=""
-      [(ngModel)]="newCategorie"
-      class="text-black align-center border-red border-2"
-    />
-    <button
-      type="button"
-      (click)="addNewCategorie()"
-      class="text-center bg-red-200 border-black border-2"
+    <app-input [(inputValue)]="newCategorie"></app-input>
+    <app-btn typeButton="button" (click)="addNewCategorie()"
+      >Add New Task</app-btn
     >
-      add New categorie
-    </button>
   </div>
 </div>
