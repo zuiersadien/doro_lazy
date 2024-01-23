@@ -1,0 +1,56 @@
+<div>
+  <div>
+    <h1 class="text-center">Ingresar Nueva tarea</h1>
+    <input
+      [(ngModel)]="newTask"
+      class="border-2 border-red-400"
+      type="text"
+      name=""
+      value=""
+    />
+    <button
+      type="button"
+      (click)="addNewTask()"
+      class="text-center bg-red-200 border-black border-2"
+    >
+      add New Task
+    </button>
+    <div>
+      @for (task of tasks; track task.id) {
+        <div class="text-center bg-red-200 text-white">
+          {{ task.id }} - {{ task.description }}
+          <select class="border-blue bg-red-200" [(ngModel)]="task.idcategorie">
+            <option value=""></option>
+            @for (categorie of categories; track categorie.id) {
+              <option value="{{ categorie.id }}">
+                {{ categorie.description }}
+              </option>
+            }
+          </select>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="border-black border-2">
+    Crear Categoria
+    <div class=""></div>
+    @for (categorie of categories; track categorie.id) {
+      <div>
+        {{ categorie.description }}
+      </div>
+    }
+    <input
+      type="text"
+      value=""
+      [(ngModel)]="newCategorie"
+      class="text-black align-center border-red border-2"
+    />
+    <button
+      type="button"
+      (click)="addNewCategorie()"
+      class="text-center bg-red-200 border-black border-2"
+    >
+      add New categorie
+    </button>
+  </div>
+</div>
