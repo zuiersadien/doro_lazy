@@ -1,7 +1,9 @@
-<input
-  type="text"
-  [(ngModel)]="inputValue"
-  (keyup)="emitValueChange()"
-  class="text-black align-center border-red border-2"
-/>
-{{ inputValue }}
+<div class="flex flex-col p-1 flex-wrap">
+  <label for="">{{ label }}</label>
+  <input
+    type="text"
+    [(ngModel)]="inputValue"
+    (keyup)="emitValueChange()"
+    class="text-secondary-dark border-red border-2"
+  />
+</div>

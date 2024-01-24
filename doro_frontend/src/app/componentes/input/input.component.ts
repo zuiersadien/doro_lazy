@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 export class InputComponent {
   @Input() inputValue: any = '';
   @Output() inputValueChange = new EventEmitter<string>();
+  @Input() label: string = '';
 
   emitValueChange() {
     console.log('this value is change');

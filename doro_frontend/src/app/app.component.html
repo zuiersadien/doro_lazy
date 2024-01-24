@@ -1,21 +1,42 @@
 <div>
   <div>
     <h1 class="text-center">Ingresar Nueva tarea</h1>
-    <app-input [(inputValue)]="newTask"></app-input>
+    <app-input
+      [(inputValue)]="newTask"
+      (keyup.enter)="addNewTask()"
+    ></app-input>
     <app-btn typeButton="button" (click)="addNewTask()">Add New Task</app-btn>
 
     <div>
       @for (task of tasks; track task.id) {
-        <div class="text-center bg-red-200 text-white">
-          {{ task.id }} - {{ task.description }}
-          <select class="border-blue bg-red-200" [(ngModel)]="task.idcategorie">
-            <option value=""></option>
-            @for (categorie of categories; track categorie.id) {
-              <option value="{{ categorie.id }}">
-                {{ categorie.description }}
-              </option>
-            }
-          </select>
+        <div
+          class="text-start bg-white text-gray-500 shadow-secondary p-2 border-2 rounded-l-sm shadow-2xl"
+        >
+          <div class="grid grid-cols-4">
+            <div class="flex">
+              <input
+                type="checkbox"
+                class="appearance-none w-6 border-2 border-primary h-6 rounded-full checked:border-white checked:bg-secondary"
+              />
+              <p class="ml-2 font-bold">
+                {{ task.description }}
+              </p>
+            </div>
+            <div></div>
+            <div>
+              <select
+                class="border-blue bg-red-200"
+                [(ngModel)]="task.idcategorie"
+              >
+                <option value=""></option>
+                @for (categorie of categories; track categorie.id) {
+                  <option value="{{ categorie.id }}">
+                    {{ categorie.description }}
+                  </option>
+                }
+              </select>
+            </div>
+          </div>
         </div>
       }
     </div>
@@ -27,7 +48,7 @@
     @for (categorie of categories; track categorie.id) {
       <div class="bg-primary">{{ categorie.description }}</div>
     }
-    <app-input [(inputValue)]="newCategorie"></app-input>
+    <app-input [(inputValue)]="newCategorie" label="New Categorie"></app-input>
     <app-btn typeButton="button" (click)="addNewCategorie()"
       >Add New Task</app-btn
     >

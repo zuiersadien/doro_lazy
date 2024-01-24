@@ -13,7 +13,14 @@ import { InputComponent } from './componentes/input/input.component';
 })
 export class AppComponent {
   newTask: string = 'n';
-  tasks: any[] = [];
+  tasks: any[] = [
+    {
+      description: 'prueba',
+      done: false,
+      idcategoria: null,
+      id: 0,
+    },
+  ];
   newCategorie: string = 'asdas';
   categories: any[] = [
     {
