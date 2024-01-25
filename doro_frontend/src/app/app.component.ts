@@ -12,6 +12,12 @@ import { InputComponent } from './componentes/input/input.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  time: any = {
+    seconds: 0,
+    minutes: 0,
+    hours: 0,
+  };
+  timeElapsed: string = `0${this.time.hours}:0${this.time.minutes}:0${this.time.seconds}`;
   newTask: string = 'n';
   tasks: any[] = [
     {
@@ -28,6 +34,28 @@ export class AppComponent {
       id: 0,
     },
   ];
+  startNewSesion: boolean = false;
+
+  stopWatch: any;
+  startStopWatch() {
+    this.stopWatch = setInterval(() => {
+      console.log(this.time);
+      this.time.seconds++;
+      if (this.time.seconds === 60) {
+        this.time.seconds = 0;
+        this.time.minutes++;
+      }
+
+      if (this.time.minutes === 60) {
+        this.time.minutes = 0;
+        this.time.hours++;
+      }
+      this.updateDisplay();
+    }, 1000);
+  }
+  updateDisplay() {
+    this.timeElapsed = `${this.time.hours < 10 ? '0' : ''}${this.time.hours}:${this.time.minutes < 10 ? '0' : ''}${this.time.minutes}:${this.time.seconds < 10 ? '0' : ''}${this.time.seconds}`;
+  }
   idGenerator(array: any[]) {
     let arrIdNumber = array.map((e) => e.id);
     let largestNumber = Math.max(...arrIdNumber);
@@ -35,6 +63,18 @@ export class AppComponent {
       return ++largestNumber;
     } else {
       return 0;
+    }
+  }
+  stopStopwatch() {
+    clearInterval(this.stopWatch);
+  }
+  changeStartNewSesion(condition: 'stop' | 'start') {
+    if (condition == 'stop') {
+      this.startNewSesion = false;
+      this.stopStopwatch();
+    } else if (condition == 'start') {
+      this.startNewSesion = true;
+      this.startStopWatch();
     }
   }
   addNewTask() {

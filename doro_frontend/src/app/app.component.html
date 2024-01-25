@@ -1,56 +1,122 @@
-<div>
+<div class="grid grid-cols-3">
   <div>
-    <h1 class="text-center">Ingresar Nueva tarea</h1>
-    <app-input
-      [(inputValue)]="newTask"
-      (keyup.enter)="addNewTask()"
-    ></app-input>
-    <app-btn typeButton="button" (click)="addNewTask()">Add New Task</app-btn>
-
     <div>
-      @for (task of tasks; track task.id) {
-        <div
-          class="text-start bg-white text-gray-500 shadow-secondary p-2 border-2 rounded-l-sm shadow-2xl"
-        >
-          <div class="grid grid-cols-4">
-            <div class="flex">
-              <input
-                type="checkbox"
-                class="appearance-none w-6 border-2 border-primary h-6 rounded-full checked:border-white checked:bg-secondary"
-              />
-              <p class="ml-2 font-bold">
-                {{ task.description }}
-              </p>
-            </div>
-            <div></div>
-            <div>
-              <select
-                class="border-blue bg-red-200"
-                [(ngModel)]="task.idcategorie"
-              >
-                <option value=""></option>
-                @for (categorie of categories; track categorie.id) {
-                  <option value="{{ categorie.id }}">
-                    {{ categorie.description }}
-                  </option>
-                }
-              </select>
+      <h1 class="text-center">Ingresar Nueva tarea</h1>
+      <app-input
+        [(inputValue)]="newTask"
+        (keyup.enter)="addNewTask()"
+      ></app-input>
+      <app-btn typeButton="button" (click)="addNewTask()">Add New Task</app-btn>
+
+      <div>
+        @for (task of tasks; track task.id) {
+          <div
+            class="text-start bg-white text-gray-500 shadow-secondary p-2 border-2 rounded-l-sm shadow-2xl"
+          >
+            <div class="grid grid-cols-4">
+              <div class="flex">
+                <input
+                  type="checkbox"
+                  class="appearance-none w-6 border-2 border-primary h-6 rounded-full checked:border-white checked:bg-secondary"
+                />
+                <p class="ml-2 font-bold">
+                  {{ task.description }}
+                </p>
+              </div>
+              <div></div>
+              <div>
+                <select
+                  class="border-blue bg-red-200"
+                  [(ngModel)]="task.idcategorie"
+                >
+                  <option value=""></option>
+                  @for (categorie of categories; track categorie.id) {
+                    <option value="{{ categorie.id }}">
+                      {{ categorie.description }}
+                    </option>
+                  }
+                </select>
+              </div>
             </div>
           </div>
-        </div>
+        }
+      </div>
+    </div>
+
+    <div class="border-black border-2">
+      Crear Categoria
+      <div class=""></div>
+      @for (categorie of categories; track categorie.id) {
+        <div class="bg-primary">{{ categorie.description }}</div>
       }
+      <app-input
+        [(inputValue)]="newCategorie"
+        label="New Categorie"
+      ></app-input>
+      <app-btn typeButton="button" (click)="addNewCategorie()"
+        >Add New Task</app-btn
+      >
     </div>
   </div>
 
-  <div class="border-black border-2">
-    Crear Categoria
-    <div class=""></div>
-    @for (categorie of categories; track categorie.id) {
-      <div class="bg-primary">{{ categorie.description }}</div>
-    }
-    <app-input [(inputValue)]="newCategorie" label="New Categorie"></app-input>
-    <app-btn typeButton="button" (click)="addNewCategorie()"
-      >Add New Task</app-btn
+  <div class="grid grid-cols-2 col-span-2 h-16">
+    <div class="text-lg font-bold">
+      <input
+        placeholder="Que es lo que quieres hacer ahora"
+        type=""
+        name=""
+        value=""
+        class="h-16 p-2 focus:ring-blue-500 focus:border-blue-500"
+      />
+    </div>
+    <div
+      class="grid grid-cols-6 place-content-center content-center items-center justify-items-center"
     >
+      <app-btn>
+        <i class="fa-regular fa-folder"></i>
+      </app-btn>
+
+      <app-btn>
+        <i class="fa-solid fa-tag"></i>
+      </app-btn>
+      <div class="col-span-2">
+        <h1 class="text-2xl text-gray-700">{{ timeElapsed }}</h1>
+        <!-- <app-input> </app-input> -->
+      </div>
+      <div>
+        @if (startNewSesion) {
+          <div class="flex relative items-center justify-center">
+            <span
+              type="button"
+              class="rounded-full absolute animate-ping bg-orange-500 w-6 h-6 flex justify-center items-center"
+            ></span>
+            <button
+              class="rounded-full relative bg-orange-500 w-9 h-9 flex justify-center items-center"
+              type="button"
+              (click)="changeStartNewSesion('stop')"
+            >
+              <i class="fa-solid fa-stop text-white"></i>
+            </button>
+          </div>
+        } @else {
+          <div class="flex relative items-center justify-center">
+            <span
+              type="button"
+              class="rounded-full absolute animate-ping bg-purple-600 w-6 h-6 flex justify-center items-center"
+            ></span>
+            <button
+              class="rounded-full relative bg-purple-600 w-9 h-9 flex justify-center items-center"
+              type="button"
+              (click)="changeStartNewSesion('start')"
+            >
+              <i class="fa-solid fa-play text-white"></i>
+            </button>
+          </div>
+        }
+      </div>
+      <app-btn>
+        <i class="fa-solid fa-bars"></i>
+      </app-btn>
+    </div>
   </div>
 </div>

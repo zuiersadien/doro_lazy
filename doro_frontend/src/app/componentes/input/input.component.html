@@ -1,9 +1,19 @@
-<div class="flex flex-col p-1 flex-wrap">
-  <label for="">{{ label }}</label>
-  <input
-    type="text"
-    [(ngModel)]="inputValue"
-    (keyup)="emitValueChange()"
-    class="text-secondary-dark border-red border-2"
-  />
+<div class="flex flex-col p-1 flex-wrap w-full">
+  <div>
+    @if (label) {
+      <label
+        for="first_name"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >{{ label }}</label
+      >
+    }
+    <input
+      type="text"
+      id="first_name"
+      [(ngModel)]="inputValue"
+      (keyup)="emitValueChange()"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      placeholder=""
+    />
+  </div>
 </div>
