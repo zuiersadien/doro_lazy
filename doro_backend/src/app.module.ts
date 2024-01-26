@@ -10,9 +10,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     TypeOrmModule.forRoot({
       type: 'mysql',
       username: 'root',
-      password: '2-3dC16Cf5h3gdb-c4615AegECfEHBGh',
+      password: '-4bF31Hcf52a1DAAefaDBGF5E5-CEED1',
       host: 'monorail.proxy.rlwy.net',
-      port: 17098,
+      port: 39266,
       synchronize: true,
       database: 'railway',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
