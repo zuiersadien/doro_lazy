@@ -16,18 +16,22 @@ export class TasksService {
   }
 
   findAll() {
-    return `This action returns all tasks`;
+    return this.taskRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} task`;
+    return this.taskRepository.findOne({
+      where: {
+        id,
+      },
+    });
   }
 
   update(id: number, updateTaskDto: UpdateTaskDto) {
-    return `This action updates a #${id} task`;
+    return this.taskRepository.update({ id }, updateTaskDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} task`;
+    return this.taskRepository.delete({ id });
   }
 }
