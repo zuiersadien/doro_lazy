@@ -1,3 +1,4 @@
+<app-overlay></app-overlay>
 <div class="grid grid-cols-3">
   <div>
     <div>
@@ -72,13 +73,19 @@
     <div
       class="grid grid-cols-6 place-content-center content-center items-center justify-items-center"
     >
-      <app-btn>
+      <app-overlay
+        htmlHeader='
         <i class="fa-regular fa-folder"></i>
-      </app-btn>
+        '
+      >
+      </app-overlay>
 
-      <app-btn>
+      <app-overlay
+        htmlHeader='
         <i class="fa-solid fa-tag"></i>
-      </app-btn>
+        '
+      >
+      </app-overlay>
       <div class="col-span-2">
         <h1 class="text-2xl text-gray-700">{{ timeElapsed }}</h1>
         <!-- <app-input> </app-input> -->
@@ -114,9 +121,11 @@
           </div>
         }
       </div>
-      <app-btn>
+      <app-overlay
+        htmlHeader='
         <i class="fa-solid fa-bars"></i>
-      </app-btn>
+        '
+      ></app-overlay>
     </div>
   </div>
 </div>

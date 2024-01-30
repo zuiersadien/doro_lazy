@@ -1,1 +1,22 @@
-<p>overlay works!</p>
+<app-btn
+  typeButton="button"
+  #menuOverlay="cdkOverlayOrigin"
+  cdkOverlayOrigin
+  (click)="isOpen = !isOpen"
+>
+  <div [innerHTML]="htmlHeader"></div>
+</app-btn>
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="menuOverlay"
+  [cdkConnectedOverlayOpen]="isOpen"
+>
+  <ul
+    class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg"
+  >
+    <li class="w-full px-4 py-2 border-b border-info rounded-t-lg">Profile</li>
+    <li class="w-full px-4 py-2 border-b border-info">Settings</li>
+    <li class="w-full px-4 py-2 border-b border-info">Messages</li>
+    <li class="w-full px-4 py-2 rounded-b-lg">Download</li>
+  </ul></ng-template
+>

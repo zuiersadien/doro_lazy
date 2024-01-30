@@ -3,15 +3,35 @@ import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { BtnComponent } from './componentes/btn/btn.component';
 import { InputComponent } from './componentes/input/input.component';
+import { TasksService } from './services/tasks.service';
+import { OverlayComponent } from './components/overlay/overlay.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, BtnComponent, InputComponent],
+  imports: [
+    RouterOutlet,
+    FormsModule,
+    BtnComponent,
+    InputComponent,
+    OverlayComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  constructor(private taskService: TasksService) {}
+
+  ngOnInit() {
+    this.getAllTask();
+  }
+  getAllTask() {
+    this.taskService.getAll().subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+    });
+  }
   time: any = {
     seconds: 0,
     minutes: 0,
