@@ -5,6 +5,7 @@ import { BtnComponent } from './componentes/btn/btn.component';
 import { InputComponent } from './componentes/input/input.component';
 import { TasksService } from './services/tasks.service';
 import { OverlayComponent } from './components/overlay/overlay.component';
+import { TagOverlayComponent } from './components/tag-overlay/tag-overlay.component';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { OverlayComponent } from './components/overlay/overlay.component';
     FormsModule,
     BtnComponent,
     InputComponent,
+    TagOverlayComponent,
     OverlayComponent,
   ],
   templateUrl: './app.component.html',

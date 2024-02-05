@@ -1,0 +1,11 @@
+# :foo = bar
+POST http://localhost:3000/tasks
+{ "data": ":foo",
+  "otherkey": "hello"
+}
+# :foo = bar
+POST http://httpbin.org/post
+{
+  "data": ":foo",
+  "otherkey": "hello"
+}
