@@ -4,4 +4,7 @@
         '
 >
   <app-input placeholder="add/filter tags"></app-input>
+  @for (tag of tags; track tag.id) {
+    <input type="checkbox" name="" value="" />{{ tag.description }}
+  }
 </app-overlay>

@@ -14,10 +14,10 @@ export class OverlayComponent {
   @Input()
   htmlHeader = 'header';
 
-  @HostListener('document:click', ['$event'])
-  closeMenu(event: Event) {
-    if (!this.elRef.nativeElement.contains(event.target)) {
-      this.isOpen = false;
-    }
-  }
+  // @HostListener('document:click', ['$event'])
+  // closeMenu(event: Event) {
+  //   if (!this.elRef.nativeElement.contains(event.target)) {
+  //     this.isOpen = false;
+  //   }
+  // }
 }

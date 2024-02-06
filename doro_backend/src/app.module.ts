@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TasksModule } from './module/tasks/tasks.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TagsModule } from './module/tags/tags.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: 'railway',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
     }),
+    TagsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
