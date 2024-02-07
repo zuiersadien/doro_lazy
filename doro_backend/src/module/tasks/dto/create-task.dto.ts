@@ -1,28 +1,11 @@
-import {
-  IsBoolean,
-  IsDateString,
-  IsNotEmpty,
-  IsNumber,
-  IsString,
-} from 'class-validator';
+import { IsArray, IsNumber, IsOptional, IsString } from 'class-validator';
 export class CreateTaskDto {
   @IsString()
-  @IsNotEmpty()
   description?: string;
+  @IsArray()
+  idtags: any[];
 
-  @IsBoolean()
-  @IsNotEmpty()
-  done?: boolean;
-
+  @IsOptional()
   @IsNumber()
-  @IsNotEmpty()
-  idtag?: number;
-
-  @IsNotEmpty()
-  @IsDateString()
-  startTime?: Date;
-
-  @IsNotEmpty()
-  @IsDateString()
-  endTime?: Date;
+  idcategory: number;
 }

@@ -40,7 +40,13 @@ export class AppComponent {
     hours: 0,
   };
   timeElapsed: string = `0${this.time.hours}:0${this.time.minutes}:0${this.time.seconds}`;
-  newTask: string = 'n';
+  newTask: any = {
+    id: null,
+    description: '',
+    done: false,
+    idtags: [],
+    idcategory: null,
+  };
   tasks: any[] = [
     {
       description: 'prueba',
@@ -93,10 +99,33 @@ export class AppComponent {
   changeStartNewSesion(condition: 'stop' | 'start') {
     if (condition == 'stop') {
       this.startNewSesion = false;
+      this.newTask.done = true;
+
+      this.taskService.update(this.newTask).subscribe({
+        next: (e) => {
+          console.log(e);
+
+          this.newTask = {
+            id: null,
+            description: '',
+            done: false,
+            idtags: [],
+            idcategory: null,
+          };
+        },
+      });
+
       this.stopStopwatch();
     } else if (condition == 'start') {
       this.startNewSesion = true;
       this.startStopWatch();
+      this.taskService.post(this.newTask).subscribe({
+        next: (task: any) => {
+          console.log(task);
+          this.newTask = task;
+          console.log(this.newTask);
+        },
+      });
     }
   }
   addNewTask() {

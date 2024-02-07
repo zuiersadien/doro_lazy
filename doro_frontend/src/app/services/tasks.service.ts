@@ -5,8 +5,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class TasksService {
+  url = 'http://localhost:3000/tasks';
   constructor(private http: HttpClient) {}
   getAll() {
-    return this.http.get(`https://jsonplaceholder.typicode.com/todos`);
+    return this.http.get(this.url);
+  }
+  post(task: any) {
+    const body = task;
+    return this.http.post(this.url, body);
+  }
+  update(task: any) {
+    const id = task.id;
+    return this.http.patch(this.url + `/${id}`, task);
   }
 }
