@@ -100,7 +100,6 @@ export class AppComponent {
     if (condition == 'stop') {
       this.startNewSesion = false;
       this.newTask.done = true;
-
       this.taskService.update(this.newTask).subscribe({
         next: (e) => {
           console.log(e);

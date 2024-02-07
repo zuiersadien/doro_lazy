@@ -3,8 +3,32 @@
         <i class="fa-solid fa-tag"></i>
         '
 >
-  <app-input placeholder="add/filter tags"></app-input>
-  @for (tag of tags; track tag.id) {
-    <input type="checkbox" name="" value="" />{{ tag.description }}
+  <div class="relative">
+    <app-input
+      placeholder="add/filter tags"
+      [(inputValue)]="tagCreateSearch"
+      (inputValueChange)="SearchfilterTags()"
+    ></app-input>
+    <button
+      type="button"
+      (click)="clearTagCreateSearch()"
+      class="absolute right-4 bottom-3"
+      *ngIf="hideShowButtonClearTags"
+    >
+      x
+    </button>
+  </div>
+  @for (tag of filteredTags; track tag.id) {
+    <div>
+      <input
+        type="checkbox"
+        name=""
+        [value]="tag.id"
+        (change)="insertTagSelected(tag.id)"
+      />{{ tag.description }}
+    </div>
   }
+  <button class="p-2 flex justify-center items-center">
+    Create {{ tagCreateSearch }} tag
+  </button>
 </app-overlay>
