@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class TagOverlayComponent {
   constructor(private tagService: TagsService) {}
-  tagSelected: number[] = [];
+  tagSelected: any[] = [];
   tags: Tag[] = [];
   filteredTags: Tag[] = this.tags;
   tagCreateSearch: string = '';
@@ -46,6 +46,7 @@ export class TagOverlayComponent {
     }
     console.log(this.tagSelected);
   }
+
   allTags() {
     this.tagService.getAll().subscribe({
       next: (response: any) => {

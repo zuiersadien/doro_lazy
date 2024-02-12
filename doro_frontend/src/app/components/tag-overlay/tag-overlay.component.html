@@ -25,6 +25,7 @@
         name=""
         [value]="tag.id"
         (change)="insertTagSelected(tag.id)"
+        [checked]="tagSelected.includes(tag.id)"
       />{{ tag.description }}
     </div>
   }

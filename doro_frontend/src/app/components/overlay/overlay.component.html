@@ -2,7 +2,7 @@
   typeButton="button"
   #menuOverlay="cdkOverlayOrigin"
   cdkOverlayOrigin
-  (click)="isOpen = !isOpen"
+  (click)="toggleOverlay()"
 >
   <div [innerHTML]="htmlHeader"></div>
 </app-btn>
@@ -10,6 +10,7 @@
   cdkConnectedOverlay
   [cdkConnectedOverlayOrigin]="menuOverlay"
   [cdkConnectedOverlayOpen]="isOpen"
+  (detach)="closeOverlay()"
 >
   <ul
     class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg"
